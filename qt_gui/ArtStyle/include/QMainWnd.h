@@ -1,0 +1,78 @@
+#ifndef QMAINWND_H
+#define QMAINWND_H
+
+#include <QMainWindow>
+#include <QGridLayout>
+#include <QSpacerItem>
+#include <QScreen>
+
+#include <QTabBar>
+#include <QProxyStyle>
+#include <QStyleOption>
+
+#include <QListView>
+#include <QGroupBox>
+#include <QLabel>
+#include <QPushButton>
+
+#include "SContext.h"
+
+namespace Ui
+{
+	class QMainWnd;
+}
+
+class QMainWnd
+	: public QMainWindow
+{
+	Q_OBJECT
+
+public:
+	explicit QMainWnd( const SContext* context, QWidget* parent = nullptr );
+	QMainWnd( const QMainWnd& other ) = delete;
+	QMainWnd( QMainWnd&& other ) = delete;
+	void operator=( const QMainWnd& other ) = delete;
+	void operator=( QMainWnd&& other ) = delete;
+	~QMainWnd();
+
+	void Show();
+
+private:
+	class QCustomTabStyle
+		: public QProxyStyle
+	{
+	protected:
+		virtual void drawControl( QStyle::ControlElement element, const QStyleOption *option, QPainter *painter, const QWidget *widget = nullptr ) const override
+		{
+			if( element == CE_TabBarTab )
+			{
+				if( const QStyleOptionTab* tab = qstyleoption_cast< const QStyleOptionTab* >(option) )
+				{
+					QStyleOptionTab opt_tab(*tab);
+					opt_tab.shape = QTabBar::RoundedNorth;
+					QProxyStyle::drawControl( element, &opt_tab, painter, widget );
+					return;
+				}
+			}
+			QProxyStyle::drawControl( element, option, painter, widget );
+		}
+
+		virtual QSize sizeFromContents( QStyle::ContentsType type, const QStyleOption *option, const QSize &contentsSize, const QWidget *widget = nullptr ) const override
+		{
+			QSize size = QProxyStyle::sizeFromContents( type, option, contentsSize, widget );
+			if( type == QStyle::CT_TabBarTab )
+			{
+				size.transpose();
+			}
+			return size;
+		}
+
+	};
+
+	Ui::QMainWnd* ui;
+
+	void InitStylesUi();
+
+};
+
+#endif // QMAINWND_H

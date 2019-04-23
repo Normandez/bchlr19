@@ -15,3 +15,18 @@ pip-delete-this-directory.txt
 
 # checkpoint
 checkpoint
+
+# C++/Qt
+ArtStyle-build-x64-Debug/*
+ArtStyle-build-x64-Release/*
+.vs
+debug/
+release/
+GeneratedFiles/
+x64/
+.qmake.stash
+*.user
+*.vcxproj*
+*.sln
+*.VC.*
+ui_*

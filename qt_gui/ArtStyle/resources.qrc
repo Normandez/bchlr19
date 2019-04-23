@@ -1,0 +1,29 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+	<!-- IMAGE ICONS -->
+	<file>res/normal_size.png</file>
+	<file>res/fit_to_wnd.png</file>
+	<file>res/zoom_in.png</file>
+	<file>res/zoom_out.png</file>
+
+	<!-- VIDEO ICONS -->
+	<file>res/backward.png</file>
+	<file>res/forward.png</file>
+	<file>res/play.png</file>
+	<file>res/pause.png</file>
+	<file>res/stop.png</file>
+	<file>res/volume.png</file>
+	
+	<!-- STYLE ICONS -->
+	<file>res/la_muse.jpg</file>
+	<file>res/rain_princess.jpg</file>
+	<file>res/the_scream.jpg</file>
+	<file>res/the_shipwreck_of_the_minotaur.jpg</file>
+	<file>res/udnie.jpg</file>
+	<file>res/wave.jpg</file>
+	
+	<!-- COMMON ICONS -->
+	<file>res/no_volume.png</file>
+	<file>res/no_source.png</file>
+</qresource>
+</RCC>
