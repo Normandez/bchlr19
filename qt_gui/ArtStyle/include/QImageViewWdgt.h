@@ -25,8 +25,12 @@ public:
 	void operator=( QImageViewWdgt&& other ) = delete;
 	~QImageViewWdgt();
 
+	void SetImage( const QString& img_path );
+
 private:
 	QPixmap m_no_source_pixmap;
+	QPixmap m_loaded_pixmap;
+	bool m_is_adjusted;
 
 	QScrollArea* m_img_placeholder;
 	QLabel* m_img;
@@ -36,7 +40,21 @@ private:
 	QPushButton* m_btn_zoom_in;
 	QPushButton* m_btn_zoom_out;
 
+	bool m_is_enable_ui;
+
+	void EnableUi();
 	void DisableUi();
+
+	void NormalSize();
+	void FitToWindow();
+	void ZoomIn();
+	void ZoomOut();
+
+private slots:
+	void onBtnNormalSizeClicked();	
+	void onBtnFitToWindowClicked();
+	void onBtnZoomInClicked();
+	void onBtnZoomOutClicked();
 
 };
 

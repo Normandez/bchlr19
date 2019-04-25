@@ -3,7 +3,9 @@
 
 QMainWnd::QMainWnd( const SContext* context, QWidget* parent /*= nullptr*/ )
 	: QMainWindow(parent),
-	  ui( new Ui::QMainWnd )
+	  ui( new Ui::QMainWnd ),
+	  m_last_img_dir("."),
+	  m_last_video_dir(".")
 {
 	ui->setupUi(this);
 
@@ -38,4 +40,30 @@ void QMainWnd::InitStylesUi()
 void QMainWnd::Show()
 {
 	this->show();
+}
+
+void QMainWnd::on_btn_img_in_load_clicked()
+{
+	QString file_name = QFileDialog::getOpenFileName( this, "Load Image", m_last_img_dir, "Images ( *.png *.jpg *.bmp )" );
+	if( !file_name.isEmpty() )
+	{
+		ui->img_wdgt_in->SetImage(file_name);
+
+		int last_dir_sep_pos = file_name.lastIndexOf("/");
+		int file_name_length = file_name.length();
+		m_last_img_dir = file_name.remove( last_dir_sep_pos, file_name_length - last_dir_sep_pos );
+	}
+}
+
+void QMainWnd::on_btn_video_in_load_clicked()
+{
+	QString file_name = QFileDialog::getOpenFileName( this, "Load Video", m_last_video_dir, "Video ( *.mp4 )" );
+	if( !file_name.isEmpty() )
+	{
+		ui->video_wdgt_in->SetVideo(file_name);
+
+		int last_dir_sep_pos = file_name.lastIndexOf("/");
+		int file_name_length = file_name.length();
+		m_last_video_dir = file_name.remove( last_dir_sep_pos, file_name_length - last_dir_sep_pos );
+	}
 }

@@ -15,6 +15,8 @@
 #include <QLabel>
 #include <QPushButton>
 
+#include <QFileDialog>
+
 #include "SContext.h"
 
 namespace Ui
@@ -71,7 +73,14 @@ private:
 
 	Ui::QMainWnd* ui;
 
+	QString m_last_img_dir;
+	QString m_last_video_dir;
+
 	void InitStylesUi();
+
+private slots:
+	void on_btn_img_in_load_clicked();
+	void on_btn_video_in_load_clicked();
 
 };
 
