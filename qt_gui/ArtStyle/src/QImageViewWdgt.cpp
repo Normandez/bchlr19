@@ -2,6 +2,7 @@
 
 QImageViewWdgt::QImageViewWdgt( QWidget* parent /*= nullptr*/ )
 	: QWidget(parent),
+	  m_img_url(""),
 	  m_is_adjusted(false),
 	  m_no_source_pixmap(":/res/no_source.png")
 {
@@ -48,19 +49,26 @@ QImageViewWdgt::~QImageViewWdgt()
 	this->disconnect();
 }
 
-void QImageViewWdgt::SetImage( const QString& img_path )
+void QImageViewWdgt::SetImage( const QString& img_url )
 {
+	m_img_url = img_url;
+
 	if(!m_is_enable_ui)
 	{
 		EnableUi();
 	}
 
-	m_loaded_pixmap.load(img_path);
+	m_loaded_pixmap.load(m_img_url);
 	m_img->setPixmap(m_loaded_pixmap);
 
 	m_img_placeholder->setStyleSheet("background-color:black");
 
 	NormalSize();
+}
+
+QString QImageViewWdgt::GetImageUrl() const
+{
+	return m_img_url;
 }
 
 void QImageViewWdgt::EnableUi()

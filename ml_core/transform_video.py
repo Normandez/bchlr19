@@ -72,6 +72,8 @@ def main():
     # Start video transformation
     transform_img.transform_video(opts.in_path, opts.out, opts.checkpoint, opts.device, opts.batch_size)
 
+    sys.stdout.write("OUT_FILE=" + opts.out)
+
 
 if __name__ == '__main__':
     main()

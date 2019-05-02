@@ -3,6 +3,13 @@
 
 #include "SConfig.h"
 
+enum ETransformationType
+{
+	ETransformationType_Img,
+	ETransformationType_Video,
+	ETransformationType_Empty
+};
+
 // Global app's context
 struct SContext
 {

@@ -29,6 +29,10 @@ private:
 
 	QStringList m_style_chkpt_list;
 
+private slots:
+	void onTransformationStart( ETransformationType transformation_type, int checkpoint, const QString& in_path );
+	void onTransformationFinished( ETransformationType transformation_type, int exit_code, const QString& output );
+
 };
 
 #endif // QSTYLETRANSFORMATOR_H

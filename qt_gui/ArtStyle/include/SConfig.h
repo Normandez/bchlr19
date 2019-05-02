@@ -9,6 +9,13 @@
 struct SConfig
 {
 	QString style_path;
+	QString style_transformator;
+	struct STransformationScripts
+	{
+		QString root_path;
+		QString image;
+		QString video;
+	} transformation_scripts ;
 
 	bool LoadConfig( const QString& file_name, QString& err_output = QString() );
 };

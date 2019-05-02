@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<style_path>C:/devel/FastStyleTransfer/Fast Style Transfer Models/</style_path>
+	<style_transformator>C:/devel/FastStyleTransfer/PyEnv_FastStyleTransfer/Scripts/python.exe</style_transformator>
+	<transformation_scripts>
+		<image>C:/devel/FastStyleTransfer/fast-style-transfer/transform_img.py</image>
+		<video>C:/devel/FastStyleTransfer/fast-style-transfer/transform_video.py</video>
+	</transformation_scripts>
 </config>
 
 <!-- ArtStyle.exe main config file -->

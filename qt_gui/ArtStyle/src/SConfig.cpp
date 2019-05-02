@@ -24,7 +24,15 @@ bool SConfig::LoadConfig( const QString& file_name, QString& err_output /*= QStr
 	}
 
 	// Parse content
-	this->style_path = xml_doc.firstChildElement("style_path").text();
+	QDomElement root = xml_doc.documentElement();
+	this->style_path = root.firstChildElement("style_path").text();
+	this->style_transformator = root.firstChildElement("style_transformator").text();
+	{
+		QDomElement transformation_scripts = root.firstChildElement("transformation_scripts");
+		this->transformation_scripts.root_path = transformation_scripts.firstChildElement("root_path").text();
+		this->transformation_scripts.image = transformation_scripts.firstChildElement("image").text();
+		this->transformation_scripts.video = transformation_scripts.firstChildElement("video").text();
+	}
 
 	// All OK
 	err_output = "";

@@ -42,6 +42,16 @@ void QMainWnd::Show()
 	this->show();
 }
 
+void QMainWnd::SetTransformedImage( const QString& out_image_url )
+{
+	ui->img_wdgt_out->SetImage(out_image_url);
+}
+
+void QMainWnd::SetTransformedVideo( const QString& out_video_url )
+{
+	ui->video_wdgt_out->SetVideo(out_video_url);
+}
+
 void QMainWnd::on_btn_img_in_load_clicked()
 {
 	QString file_name = QFileDialog::getOpenFileName( this, "Load Image", m_last_img_dir, "Images ( *.png *.jpg *.bmp )" );
@@ -52,6 +62,8 @@ void QMainWnd::on_btn_img_in_load_clicked()
 		int last_dir_sep_pos = file_name.lastIndexOf("/");
 		int file_name_length = file_name.length();
 		m_last_img_dir = file_name.remove( last_dir_sep_pos, file_name_length - last_dir_sep_pos );
+
+		ui->btn_img_out_transform->setEnabled(true);
 	}
 }
 
@@ -65,5 +77,17 @@ void QMainWnd::on_btn_video_in_load_clicked()
 		int last_dir_sep_pos = file_name.lastIndexOf("/");
 		int file_name_length = file_name.length();
 		m_last_video_dir = file_name.remove( last_dir_sep_pos, file_name_length - last_dir_sep_pos );
+
+		ui->btn_video_out_transform->setEnabled(true);
 	}
+}
+
+void QMainWnd::on_btn_img_out_transform_clicked()
+{
+	emit startTransformation( ETransformationType::ETransformationType_Img, ui->list_wdgt_style->currentRow(), ui->img_wdgt_in->GetImageUrl() );
+}
+
+void QMainWnd::on_btn_video_out_transform_clicked()
+{
+	emit startTransformation( ETransformationType::ETransformationType_Video, ui->list_wdgt_style->currentRow(), ui->video_wdgt_in->GetViedoUrl() );
 }

@@ -39,6 +39,9 @@ public:
 
 	void Show();
 
+	void SetTransformedImage( const QString& out_image_url );
+	void SetTransformedVideo( const QString& out_video_url );
+
 private:
 	class QCustomTabStyle
 		: public QProxyStyle
@@ -78,9 +81,14 @@ private:
 
 	void InitStylesUi();
 
+signals:
+	void startTransformation( ETransformationType transformation_type, int checkpoint, const QString& in_path );
+
 private slots:
 	void on_btn_img_in_load_clicked();
 	void on_btn_video_in_load_clicked();
+	void on_btn_img_out_transform_clicked();
+	void on_btn_video_out_transform_clicked();
 
 };
 

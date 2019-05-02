@@ -61,9 +61,12 @@ public:
 	void operator=( QVideoPlayerWdgt&& other ) = delete;
 	~QVideoPlayerWdgt();
 
-	void SetVideo( const QString& video_path );
+	void SetVideo( const QString& video_url );
+	QString GetViedoUrl() const;
 
 private:
+	QString m_video_url;
+
 	bool m_is_media_playing;
 
 	QVideoWidget* m_video_wdgt;

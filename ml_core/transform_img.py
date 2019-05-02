@@ -251,6 +251,8 @@ def main():
             transform(full_in, full_out, opts.checkpoint_dir, device_t=opts.device,
                     batch_size=opts.batch_size)
 
+    sys.stdout.write("OUT_FILE=" + opts.out_path)
+
 
 if __name__ == '__main__':
     main()

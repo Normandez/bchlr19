@@ -12,11 +12,6 @@ int main( int argc, char* argv[] )
     QApplication app( argc, argv );
 	QString app_dir_path = app.applicationDirPath();
 
-	/*if ( AttachConsole( ATTACH_PARENT_PROCESS ) ) {
-		freopen( "CONOUT$", "w", stdout );
-		freopen( "CONOUT$", "w", stderr );
-	}*/
-
 	// Load global config
 	SContext global_context;
 	QString config_load_err = "";

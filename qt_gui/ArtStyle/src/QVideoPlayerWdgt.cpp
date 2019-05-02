@@ -2,6 +2,7 @@
 
 QVideoPlayerWdgt::QVideoPlayerWdgt( QWidget* parent /*= nullptr*/ )
 	: QWidget(parent),
+	  m_video_url(""),
 	  m_is_media_playing(false),
 	  m_time_format(""),
 	  m_media_duration(0),
@@ -85,18 +86,25 @@ QVideoPlayerWdgt::~QVideoPlayerWdgt()
 	this->disconnect();
 }
 
-void QVideoPlayerWdgt::SetVideo( const QString& video_path )
+void QVideoPlayerWdgt::SetVideo( const QString& video_url )
 {
+	m_video_url = video_url;
+
 	DisableUi();
 	EnableUi();
 	onBtnStopClicked();
 
-	m_media_player->setMedia( QUrl::fromLocalFile(video_path) );
+	m_media_player->setMedia( QUrl::fromLocalFile(m_video_url) );
 	m_media_volume = 0;
 	m_media_player->setVolume(m_media_volume);
 	m_media_player->play();
 	m_media_player->pause();
 	m_is_media_playing = false;
+}
+
+QString QVideoPlayerWdgt::GetViedoUrl() const
+{
+	return m_video_url;
 }
 
 void QVideoPlayerWdgt::EnableUi()

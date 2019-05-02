@@ -25,9 +25,12 @@ public:
 	void operator=( QImageViewWdgt&& other ) = delete;
 	~QImageViewWdgt();
 
-	void SetImage( const QString& img_path );
+	void SetImage( const QString& img_url );
+	QString GetImageUrl() const;
 
 private:
+	QString m_img_url;
+
 	QPixmap m_no_source_pixmap;
 	QPixmap m_loaded_pixmap;
 	bool m_is_adjusted;
