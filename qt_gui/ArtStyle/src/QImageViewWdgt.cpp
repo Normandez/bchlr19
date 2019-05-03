@@ -7,8 +7,10 @@ QImageViewWdgt::QImageViewWdgt( QWidget* parent /*= nullptr*/ )
 	  m_no_source_pixmap(":/res/no_source.png")
 {
 	m_img_placeholder = new QScrollArea();
-	m_img_placeholder->setFixedSize( QSize( 623, 525 ) );
-	m_img_placeholder->setBackgroundRole(QPalette::Dark);
+	m_img_placeholder->setMinimumSize( QSize( 623, 525 ) );
+	QPalette img_wdgt_pal;
+	img_wdgt_pal.setColor( QPalette::Window, Qt::black );
+	m_img_placeholder->setPalette(img_wdgt_pal);
 	m_img_placeholder->setStyleSheet("border:0px");
 	m_img = new QLabel();
 	m_img->setScaledContents(true);

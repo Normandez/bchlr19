@@ -25,5 +25,16 @@
 	<!-- COMMON ICONS -->
 	<file>res/no_volume.png</file>
 	<file>res/no_source.png</file>
+	
+	<!-- BACKGROUNDS -->
+	<file>res/black_grid_background.jpg</file>
+	
+	<!-- TAB ICONS -->
+	<file>res/gallery_selected.png</file>
+	<file>res/gallery_non_selected.png</file>
+	<file>res/image_selected.png</file>
+	<file>res/image_non_selected.png</file>
+	<file>res/video_selected.png</file>
+	<file>res/video_non_selected.png</file>
 </qresource>
 </RCC>

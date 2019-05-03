@@ -17,13 +17,17 @@ QVideoPlayerWdgt::QVideoPlayerWdgt( QWidget* parent /*= nullptr*/ )
 	m_video_wdgt->setPalette(video_wdgt_pal);
 	m_media_player = new QMediaPlayer(this);
 	m_media_player->setVideoOutput(m_video_wdgt);
-	m_video_wdgt->setFixedSize( QSize( 632, 525 ) );
+	m_video_wdgt->setMinimumSize( QSize( 632, 525 ) );
 
 	QHBoxLayout* time_lyt = new QHBoxLayout();
 	m_slider_time = new QClickMovableSlider(Qt::Horizontal);
+	m_slider_time->setStyleSheet("QSlider::handle:horizontal {background-color: #76b900; border-radius: 5px;}");
 	m_lbl_total_time = new QLabel();
+	m_lbl_total_time->setStyleSheet("color: #FFFFFF;");
 	QLabel* lbl_time_sep = new QLabel("/");
+	lbl_time_sep->setStyleSheet("color: #FFFFFF;");
 	m_lbl_current_time = new QLabel();
+	m_lbl_current_time->setStyleSheet("color: #FFFFFF;");
 	time_lyt->addWidget(m_slider_time);
 	time_lyt->addWidget(m_lbl_current_time);
 	time_lyt->addWidget(lbl_time_sep);
@@ -36,6 +40,7 @@ QVideoPlayerWdgt::QVideoPlayerWdgt( QWidget* parent /*= nullptr*/ )
 	m_btn_forward = new QPushButton( QIcon(":/res/forward.png"), "" );
 	m_btn_volume = new QPushButton( QIcon(":/res/no_volume.png"), "" );
 	m_slider_volume = new QClickMovableSlider(Qt::Horizontal);
+	setStyleSheet("QSlider::handle:horizontal {background-color: #76b900; border-radius: 5px;}");
 	m_slider_volume->setFixedWidth(100);
 	m_slider_volume->setMaximum(100);
 	player_control_lyt->addWidget(m_btn_stop);
@@ -50,7 +55,7 @@ QVideoPlayerWdgt::QVideoPlayerWdgt( QWidget* parent /*= nullptr*/ )
 	common_lyt->addWidget(m_video_wdgt);
 	common_lyt->addLayout(time_lyt);
 	common_lyt->addLayout(player_control_lyt);
-	common_lyt->addSpacerItem( new QSpacerItem( 20, 40, QSizePolicy::Maximum, QSizePolicy::Expanding ) );
+	common_lyt->addSpacerItem( new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding ) );
 	this->setLayout(common_lyt);
 
 	DisableUi();

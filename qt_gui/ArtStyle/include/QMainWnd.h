@@ -17,6 +17,8 @@
 
 #include <QFileDialog>
 
+#include <QMessageBox>
+
 #include "SContext.h"
 
 namespace Ui
