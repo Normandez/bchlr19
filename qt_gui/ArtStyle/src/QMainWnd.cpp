@@ -11,6 +11,9 @@ QMainWnd::QMainWnd( const SContext* context, QWidget* parent /*= nullptr*/ )
 
 	ui->tab_wdgt->tabBar()->setStyle( new QCustomTabStyle() );
 	InitStylesUi();
+
+	ui->progr_bar_img->setVisible(false);
+	ui->progr_bar_video->setVisible(false);
 }
 
 QMainWnd::~QMainWnd()
@@ -45,11 +48,17 @@ void QMainWnd::Show()
 void QMainWnd::SetTransformedImage( const QString& out_image_url )
 {
 	ui->img_wdgt_out->SetImage(out_image_url);
+
+	ui->btn_img_out_stop_transform->setEnabled(false);
+	ui->progr_bar_img->setVisible(false);
 }
 
 void QMainWnd::SetTransformedVideo( const QString& out_video_url )
 {
 	ui->video_wdgt_out->SetVideo(out_video_url);
+
+	ui->btn_video_out_stop_transform->setEnabled(false);
+	ui->progr_bar_video->setVisible(false);
 }
 
 void QMainWnd::on_btn_img_in_load_clicked()
@@ -85,9 +94,31 @@ void QMainWnd::on_btn_video_in_load_clicked()
 void QMainWnd::on_btn_img_out_transform_clicked()
 {
 	emit startTransformation( ETransformationType::ETransformationType_Img, ui->list_wdgt_style->currentRow(), ui->img_wdgt_in->GetImageUrl() );
+
+	ui->btn_img_out_stop_transform->setEnabled(true);
+	ui->progr_bar_img->setVisible(true);
+}
+
+void QMainWnd::on_btn_img_out_stop_transform_clicked()
+{
+	emit stopTransformation(ETransformationType::ETransformationType_Img);
+
+	ui->btn_img_out_stop_transform->setEnabled(false);
+	ui->progr_bar_img->setVisible(false);
 }
 
 void QMainWnd::on_btn_video_out_transform_clicked()
 {
 	emit startTransformation( ETransformationType::ETransformationType_Video, ui->list_wdgt_style->currentRow(), ui->video_wdgt_in->GetViedoUrl() );
+
+	ui->btn_video_out_stop_transform->setEnabled(true);
+	ui->progr_bar_video->setVisible(true);
+}
+
+void QMainWnd::on_btn_video_out_stop_transform_clicked()
+{
+	emit stopTransformation(ETransformationType::ETransformationType_Video);
+
+	ui->btn_video_out_stop_transform->setEnabled(false);
+	ui->progr_bar_video->setVisible(false);
 }

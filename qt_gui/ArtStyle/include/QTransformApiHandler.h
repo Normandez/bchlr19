@@ -21,6 +21,8 @@ public:
 	~QTransformApiHandler();
 
 	void StartTransform( ETransformationType transformation_type, const QString& checkpoint, const QString& in_path, const QString& out_path );
+	void StopTransform();
+
 	bool IsInProgress() const;
 
 private:

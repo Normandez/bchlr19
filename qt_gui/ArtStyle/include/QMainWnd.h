@@ -83,12 +83,15 @@ private:
 
 signals:
 	void startTransformation( ETransformationType transformation_type, int checkpoint, const QString& in_path );
+	void stopTransformation( ETransformationType transformation_type );
 
 private slots:
 	void on_btn_img_in_load_clicked();
 	void on_btn_video_in_load_clicked();
 	void on_btn_img_out_transform_clicked();
+	void on_btn_img_out_stop_transform_clicked();
 	void on_btn_video_out_transform_clicked();
+	void on_btn_video_out_stop_transform_clicked();
 
 };
 

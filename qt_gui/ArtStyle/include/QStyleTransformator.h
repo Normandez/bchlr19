@@ -31,6 +31,7 @@ private:
 
 private slots:
 	void onTransformationStart( ETransformationType transformation_type, int checkpoint, const QString& in_path );
+	void onTransformationStop( ETransformationType transformation_type );
 	void onTransformationFinished( ETransformationType transformation_type, int exit_code, const QString& output );
 
 };

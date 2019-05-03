@@ -19,6 +19,7 @@ QTransformApiHandler::QTransformApiHandler( const SContext* global_context, QObj
 QTransformApiHandler::~QTransformApiHandler()
 {
 	this->disconnect();
+	m_transform_proc.blockSignals(true);
 	m_transform_proc.close();
 	m_transform_proc.kill();
 }
@@ -45,6 +46,14 @@ void QTransformApiHandler::StartTransform( ETransformationType transformation_ty
 	m_transform_proc.start( m_context->config.style_transformator, launch_params );
 }
 
+void QTransformApiHandler::StopTransform()
+{
+	m_is_in_progress = false;
+	m_current_transform_type = ETransformationType::ETransformationType_Empty;
+
+	m_transform_proc.kill();
+}
+
 bool QTransformApiHandler::IsInProgress() const
 {
 	return m_is_in_progress;
@@ -52,6 +61,8 @@ bool QTransformApiHandler::IsInProgress() const
 
 void QTransformApiHandler::onProcessFinished( int exit_code, QProcess::ExitStatus exit_status )
 {
+	if (!m_is_in_progress) return;
+
 	if( exit_code == 0 )
 	{
 		QStringList std_output_lines = QString( m_transform_proc.readAllStandardOutput() ).split("\n");
@@ -78,6 +89,8 @@ void QTransformApiHandler::onProcessFinished( int exit_code, QProcess::ExitStatu
 
 void QTransformApiHandler::onProcessError( QProcess::ProcessError error )
 {
+	if (!m_is_in_progress) return;
+
 	emit transformationFinished( m_current_transform_type, 1, "Process startup failed. Check paths and names in config." );
 
 	m_is_in_progress = false;

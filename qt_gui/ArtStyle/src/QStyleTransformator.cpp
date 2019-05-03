@@ -18,6 +18,8 @@ QStyleTransformator::QStyleTransformator( const SContext* global_context, QObjec
 
 	bool connect_chk = connect( main_wnd, &QMainWnd::startTransformation, this, &QStyleTransformator::onTransformationStart );
 	Q_ASSERT(connect_chk);
+	connect_chk = connect( main_wnd, &QMainWnd::stopTransformation, this, &QStyleTransformator::onTransformationStop );
+	Q_ASSERT(connect_chk);
 	connect_chk = connect( transform_api_handler, &QTransformApiHandler::transformationFinished, this, &QStyleTransformator::onTransformationFinished );
 	Q_ASSERT(connect_chk);
 
@@ -44,6 +46,11 @@ void QStyleTransformator::onTransformationStart( ETransformationType transformat
 	QStringList in_path_parts = in_path.split("/");
 	in_path_parts.last() = in_path_parts.last().split(".").first().append("_out_") + checkpoint_file.split("/").last().split(".").first() + "." + in_path_parts.last().split(".").last();
 	m_transform_api_handler->StartTransform( transformation_type, m_style_chkpt_list.at(checkpoint), in_path, in_path_parts.join("/") );
+}
+
+void QStyleTransformator::onTransformationStop( ETransformationType transformation_type )
+{
+	m_transform_api_handler->StopTransform();
 }
 
 void QStyleTransformator::onTransformationFinished( ETransformationType transformation_type, int exit_code, const QString& output )
