@@ -9,11 +9,16 @@ QMainWnd::QMainWnd( const SContext* context, QWidget* parent /*= nullptr*/ )
 {
 	ui->setupUi(this);
 
-	//ui->tab_wdgt->tabBar()->setStyle( new QCustomTabStyle() );
+	this->setWindowTitle("ArtStyle");
+	this->setWindowIcon( QIcon(":/res/main_icon.png") );
 
 	InitStylesUi();
 
 	ui->progr_bar->setVisible(false);
+	ui->status_bar->showMessage("Select a style");
+
+	bool connect_chk = connect( ui->list_wdgt_style, &QListWidget::currentRowChanged, this, &QMainWnd::onStyleChanged );
+	Q_ASSERT(connect_chk);
 }
 
 QMainWnd::~QMainWnd()
@@ -61,6 +66,11 @@ void QMainWnd::SetTransformedVideo( const QString& out_video_url )
 	ui->progr_bar->setVisible(false);
 }
 
+void QMainWnd::onStyleChanged( int current_row )
+{
+	ui->status_bar->showMessage( QString("Selected style: \"%1\"").arg( ui->list_wdgt_style->currentItem()->text() ) );
+}
+
 void QMainWnd::on_btn_img_in_load_clicked()
 {
 	QString file_name = QFileDialog::getOpenFileName( this, "Load Image", m_last_img_dir, "Images ( *.png *.jpg *.bmp )" );
@@ -97,6 +107,11 @@ void QMainWnd::on_btn_img_out_transform_clicked()
 	if( selected_style_index == -1 )
 	{
 		QMessageBox notice_msg( QMessageBox::Information, "INFO", "Style not selected" );
+		notice_msg.setWindowIcon( QIcon(":/res/main_icon.png") );
+		notice_msg.setStyleSheet("QMessageBox{background-color: #252525;}\
+								  QMessageBox QLabel {color: #FFFFFF;}\
+								  QMessageBox QPushButton {color: #FFFFFF; background-color: #252525}\
+								  QMessageBox QPushButton:hover{background-color: #1a1a1a;}");
 		notice_msg.exec();
 		return;
 	}
@@ -121,6 +136,11 @@ void QMainWnd::on_btn_video_out_transform_clicked()
 	if( selected_style_index == -1 )
 	{
 		QMessageBox notice_msg( QMessageBox::Information, "INFO", "Style not selected" );
+		notice_msg.setWindowIcon( QIcon(":/res/main_icon.png") );
+		notice_msg.setStyleSheet("QMessageBox{background-color: #252525;}\
+								  QMessageBox QLabel {color: #FFFFFF;}\
+								  QMessageBox QPushButton {color: #FFFFFF; background-color: #252525}\
+								  QMessageBox QPushButton:hover{background-color: #1a1a1a;}");
 		notice_msg.exec();
 		return;
 	}
@@ -137,4 +157,26 @@ void QMainWnd::on_btn_video_out_stop_transform_clicked()
 
 	ui->btn_video_out_stop_transform->setEnabled(false);
 	ui->progr_bar->setVisible(false);
+}
+
+void QMainWnd::closeEvent( QCloseEvent* ev )
+{
+	QMessageBox exit_question_msg ( QMessageBox::Question, "EXIT", "Are you sure want to quit?" );
+	exit_question_msg.setStyleSheet("QMessageBox{background-color: #252525;}\
+									 QMessageBox QLabel {color: #FFFFFF;}\
+									 QMessageBox QPushButton {color: #FFFFFF; background-color: #252525}\
+									 QMessageBox QPushButton:hover{background-color: #1a1a1a;}");
+	exit_question_msg.addButton(QMessageBox::StandardButton::Yes);
+	exit_question_msg.addButton(QMessageBox::StandardButton::No);
+	exit_question_msg.addButton(QMessageBox::StandardButton::Cancel);
+	int res = exit_question_msg.exec();
+
+    if ( res != QMessageBox::Yes )
+	{
+        ev->ignore();
+    }
+	else
+	{
+        ev->accept();
+    }
 }

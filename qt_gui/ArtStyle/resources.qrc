@@ -1,5 +1,8 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
+	<!-- MAIN ICONS -->
+	<file>res/main_icon.png</file>
+	
 	<!-- IMAGE ICONS -->
 	<file>res/normal_size.png</file>
 	<file>res/fit_to_wnd.png</file>

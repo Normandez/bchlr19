@@ -71,6 +71,11 @@ void QStyleTransformator::onTransformationFinished( ETransformationType transfor
 	else
 	{
 		QMessageBox err_msg( QMessageBox::Critical, "ERROR", "Transformation failed" );
+		err_msg.setWindowIcon( QIcon(":/res/main_icon.png") );
+		err_msg.setStyleSheet("QMessageBox{background-color: #252525;}\
+							   QMessageBox QLabel {color: #FFFFFF;}\
+							   QMessageBox QPushButton {color: #FFFFFF; background-color: #252525}\
+							   QMessageBox QPushButton:hover{background-color: #1a1a1a;}");
 		err_msg.exec();
 	}
 }
