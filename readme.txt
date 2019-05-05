@@ -32,3 +32,21 @@ ml_core:
 			--tv-weight - Weight of total variation term in loss function. Default: 2e2.
 			--learning-rate - Learning rate for optimizer. Default: 1e-3.
 			
+
+Depends:
+	1. Python (v3.6.8):
+		- tensorflow-gpu (v.1.13.0)
+		- Pillow (v6.0.0)
+		- scipy (v1.2.1)
+		- numpy (v1.16.2)
+
+	2. NVIDIA CUDA:
+		- cuda_10.0.13
+		- cudnn_10.0
+		- latest NVIDIA GPU drivers
+
+	3. Qt/C++:
+		- C++14
+		- QtFramework (v5.9.6) with multimedia module
+		- K-Lite base codecs pack
+		- LAV filters pack
