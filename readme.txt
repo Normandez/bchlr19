@@ -39,6 +39,7 @@ Depends:
 		- Pillow (v6.0.0)
 		- scipy (v1.2.1)
 		- numpy (v1.16.2)
+		- moviepy (v1.0.0)
 
 	2. NVIDIA CUDA:
 		- cuda_10.0.13
