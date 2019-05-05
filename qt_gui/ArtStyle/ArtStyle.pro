@@ -2,6 +2,7 @@ QT += core xml widgets multimedia multimediawidgets
 
 TARGET = ArtStyle
 TEMPLATE = app
+win32:RC_ICONS += res/main_icon.ico
 
 DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++14
