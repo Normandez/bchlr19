@@ -8,7 +8,7 @@ QTransformApiHandler::QTransformApiHandler( const SContext* global_context, QObj
 	  m_current_transform_type(ETransformationType::ETransformationType_Empty),
 	  m_is_in_progress(false)
 {
-	m_transform_proc.setWorkingDirectory("C:/devel/FastStyleTransfer/fast-style-transfer");
+	m_transform_proc.setWorkingDirectory(global_context->config.transformation_scripts.root_path);
 
 	bool connect_chk = connect( &m_transform_proc, SIGNAL( finished( int, QProcess::ExitStatus ) ), this, SLOT( onProcessFinished( int, QProcess::ExitStatus ) ) );
 	Q_ASSERT(connect_chk);
