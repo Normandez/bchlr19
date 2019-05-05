@@ -39,6 +39,7 @@ Depends:
 		- Pillow (v6.0.0)
 		- scipy (v1.2.1)
 		- numpy (v1.16.2)
+		- moviepy (v1.0.0)
 
 	2. NVIDIA CUDA:
 		- cuda_10.0.13
@@ -50,3 +51,11 @@ Depends:
 		- QtFramework (v5.9.6) with multimedia module
 		- K-Lite base codecs pack
 		- LAV filters pack
+		- Qt5Core.dll
+		- Qt5Gui.dll
+		- Qt5Multimedia.dll
+		- Qt5MultimediaWidgets.dll
+		- Qt5Network.dll
+		- Qt5OpenGL.dll
+		- Qt5Widgets.dll
+		- Qt5Xml.dll
