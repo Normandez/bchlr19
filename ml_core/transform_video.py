@@ -11,7 +11,7 @@ from utils import exists, list_files
 # Global consts
 TMP_DIR = '.fns_frames_%s/' % random.randint(0,99999)
 DEVICE = '/device:gpu:0'
-BATCH_SIZE = 8
+BATCH_SIZE = 4
 
 
 def build_parser():
@@ -42,7 +42,7 @@ def build_parser():
                         metavar='DEVICE', default=DEVICE)
 
     parser.add_argument('--batch-size', type=int,
-                        dest='batch_size',help='Batch size for eval. default 8.',
+                        dest='batch_size',help='Batch size for eval. default 5.',
                         metavar='BATCH_SIZE', default=BATCH_SIZE)
 
     parser.add_argument('--no-disk', type=bool, dest='no_disk',
@@ -68,6 +68,7 @@ def main():
     # Parse input params
     parser = build_parser()
     opts = parser.parse_args()
+    check_opts(opts)
 
     # Start video transformation
     transform_img.transform_video(opts.in_path, opts.out, opts.checkpoint, opts.device, opts.batch_size)
