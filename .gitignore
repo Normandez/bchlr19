@@ -13,9 +13,6 @@ pip-delete-this-directory.txt
 # PyCharm
 .idea
 
-# checkpoint
-checkpoint
-
 # C++/Qt
 ArtStyle-build-x64-Debug/*
 ArtStyle-build-x64-Release/*
