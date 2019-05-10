@@ -1,3 +1,5 @@
+Based on https://github.com/lengstrom/fast-style-transfer
+
 ml_core:
 	1. transform_img.py - transform style for single image
 		Arguments:
