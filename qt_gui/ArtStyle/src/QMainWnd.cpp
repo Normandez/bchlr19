@@ -28,14 +28,18 @@ QMainWnd::~QMainWnd()
 
 void QMainWnd::InitStylesUi()
 {
+	QListWidgetItem* itm_anime = new QListWidgetItem( QIcon(":res/anime.jpg"), "Anime Style" );
 	QListWidgetItem* itm_la_muse = new QListWidgetItem( QIcon(":/res/la_muse.jpg"), "La Muse" );
+	QListWidgetItem* itm_pencil = new QListWidgetItem( QIcon(":/res/pencil.jpg"), "Pencil Style" );
 	QListWidgetItem* itm_rain_princess = new QListWidgetItem( QIcon(":/res/rain_princess.jpg"), "Rain Princess" );
 	QListWidgetItem* itm_the_scream = new QListWidgetItem( QIcon(":/res/the_scream.jpg"), "The Scream" );
 	QListWidgetItem* itm_udnie = new QListWidgetItem( QIcon(":/res/udnie.jpg"), "Udnie" );
 	QListWidgetItem* itm_wave = new QListWidgetItem( QIcon(":/res/wave.jpg"), "Wave" );
 	QListWidgetItem* itm_wreck = new QListWidgetItem( QIcon(":/res/the_shipwreck_of_the_minotaur.jpg"), "The Shipwreck Of The Minotaur" );
 
+	ui->list_wdgt_style->addItem(itm_anime);
 	ui->list_wdgt_style->addItem(itm_la_muse);
+	ui->list_wdgt_style->addItem(itm_pencil);
 	ui->list_wdgt_style->addItem(itm_rain_princess);
 	ui->list_wdgt_style->addItem(itm_the_scream);
 	ui->list_wdgt_style->addItem(itm_udnie);

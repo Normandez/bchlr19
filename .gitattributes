@@ -1,0 +1,16 @@
+checkpoints/rain_princess.ckpt filter=lfs diff=lfs merge=lfs -text
+checkpoints/scream.ckpt filter=lfs diff=lfs merge=lfs -text
+checkpoints/udnie.ckpt filter=lfs diff=lfs merge=lfs -text
+checkpoints/wave.ckpt filter=lfs diff=lfs merge=lfs -text
+checkpoints/wreck.ckpt filter=lfs diff=lfs merge=lfs -text
+checkpoints/anime_style filter=lfs diff=lfs merge=lfs -text
+checkpoints/la_muse.ckpt filter=lfs diff=lfs merge=lfs -text
+checkpoints/pencil_style filter=lfs diff=lfs merge=lfs -text
+checkpoints/anime_style/fns.ckpt.meta filter=lfs diff=lfs merge=lfs -text
+checkpoints/anime_style/checkpoint filter=lfs diff=lfs merge=lfs -text
+checkpoints/anime_style/fns.ckpt.data-00000-of-00001 filter=lfs diff=lfs merge=lfs -text
+checkpoints/anime_style/fns.ckpt.index filter=lfs diff=lfs merge=lfs -text
+checkpoints/pencil_style/fns.ckpt.data-00000-of-00001 filter=lfs diff=lfs merge=lfs -text
+checkpoints/pencil_style/fns.ckpt.index filter=lfs diff=lfs merge=lfs -text
+checkpoints/pencil_style/fns.ckpt.meta filter=lfs diff=lfs merge=lfs -text
+checkpoints/pencil_style/checkpoint filter=lfs diff=lfs merge=lfs -text

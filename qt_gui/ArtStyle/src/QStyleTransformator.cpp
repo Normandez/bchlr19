@@ -9,7 +9,9 @@ QStyleTransformator::QStyleTransformator( const SContext* global_context, QObjec
 	QTransformApiHandler* transform_api_handler = new QTransformApiHandler(global_context);
 
 	// Init style paths
+	m_style_chkpt_list.append( global_context->config.style_path + "anime_style" );
 	m_style_chkpt_list.append( global_context->config.style_path + "la_muse.ckpt" );
+	m_style_chkpt_list.append( global_context->config.style_path + "pencil_style" );
 	m_style_chkpt_list.append( global_context->config.style_path + "rain_princess.ckpt" );
 	m_style_chkpt_list.append( global_context->config.style_path + "scream.ckpt" );
 	m_style_chkpt_list.append( global_context->config.style_path + "udnie.ckpt" );

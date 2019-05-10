@@ -18,7 +18,9 @@
 	<file>res/volume.png</file>
 	
 	<!-- STYLE ICONS -->
+	<file>res/anime.jpg</file>
 	<file>res/la_muse.jpg</file>
+	<file>res/pencil.jpg</file>
 	<file>res/rain_princess.jpg</file>
 	<file>res/the_scream.jpg</file>
 	<file>res/the_shipwreck_of_the_minotaur.jpg</file>
