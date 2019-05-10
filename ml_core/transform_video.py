@@ -57,8 +57,8 @@ def check_opts(opts):
         Returns:
             No return value, assert if failed
     """
-    exists(opts.checkpoint)
-    exists(opts.out)
+    exists(opts.checkpoint, "Checkpoint not defined!")
+    exists(opts.in_path, "Input video not defined!")
 
 
 def main():
